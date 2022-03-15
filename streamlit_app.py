@@ -4,27 +4,22 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import json
-import os
 from streamlit_lottie import st_lottie
 
-
-PROJ_ROOT = os.path.join(os.pardir)
 
 
 @st.cache
 def get_choroplethmap_data():
-    long_data_path=os.path.join(PROJ_ROOT, "data", "processed", "streamlit_data_choroplethmap.csv")
-    return pd.read_csv(long_data_path)
+    return pd.read_csv("./data/streamlit_data_choroplethmap.csv")
 
 @st.cache
 def get_scatterplot_data():
-    long_data_path=os.path.join(PROJ_ROOT, "data", "processed", "streamlit_data_scatterplot.csv")
-    return pd.read_csv(long_data_path)
+    return pd.read_csv("./data/streamlit_data_scatterplot.csv")
 
 @st.cache
 def get_linechart_data():
     main_data_path=os.path.join(PROJ_ROOT, "data", "processed", "streamlit_data_linechart.csv")
-    data=pd.read_csv(main_data_path,dtype='string', index_col='Unnamed: 0')
+    data=pd.read_csv("./data/streamlit_data_linechart.csv",dtype='string', index_col='Unnamed: 0')  
     data.index=pd.to_datetime(data.index)
     data.index=data.index.strftime('%b-%Y')
     data=data.astype(float)
@@ -32,20 +27,18 @@ def get_linechart_data():
 
 @st.cache
 def get_cities_data():
-    cities_path=os.path.join(PROJ_ROOT, "data", "processed", "Canadian_cities_info.csv")
-    return pd.read_csv(cities_path,dtype='string', index_col='Unnamed: 0')
+    return pd.read_csv("./data/Canadian_cities_info.csv",dtype='string', index_col='Unnamed: 0')
 
 @st.cache
 def get_map_data():
-    provinces_geojson=os.path.join(PROJ_ROOT, "data", "external", "Canada_Provinces_Geojson", "canada_provinces.geojson")
-    with open(provinces_geojson, "r") as geo:
+    with open("./data/canada_provinces.geojson", "r") as geo:
         map = json.load(geo)
     map['features'][5]['properties']['name']='Québec'
     return map
 
+@st.cache
 def get_lottie_gifs():
-    fuel_pump_gif=os.path.join(PROJ_ROOT, "data", "external", "fuel_pump.json")
-    with open(fuel_pump_gif, "r") as pump:
+    with open("./data/fuel_pump.json", "r") as pump:
         fuel_pump = json.load(pump)
     return fuel_pump
 
