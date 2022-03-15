@@ -79,10 +79,12 @@ st.markdown("This application is a Streamlit dashboard that can be used to explo
             " prices. There are a few plot types highlighted that can be used to find various unique insigts "
             "for each city and province through the years. All data was retrieved from [Stats Canada](https://www.statcan.gc.ca/en/subjects-start/population_and_demography)."
             " In this analysis, I go through the pros and cons of each chart type highlighting each plot type's strengths"
-            "and weaknesses. Each chart has been created using the [Plotly API](https://plotly.com/python-api-reference/)."
+            "and weaknesses. Each chart has been created using the [Plotly API](https://plotly.com/python-api-reference/).  Plotly allows the user to create dynamic interactive"
+            " plots which can be used to gain deeper insights (I was not paid to say that and I have no affiliation with plotly at all...).  I especially liked using "
+            " their API because of their animation feature. It proves to be very handy when exploring time series data."
             " Below each chart you can view the data used to create it."
             "\n"
-            "*All monetary values have been adjusted to present day dollar value (real dollars)"
+            "*All monetary values are in CAD and have been adjusted to their present day dollar value (real dollars)"
             )
             
 st.markdown('***')
